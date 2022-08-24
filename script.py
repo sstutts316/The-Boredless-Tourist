@@ -4,19 +4,20 @@ test_traveler = ['Erin Wilkes', 'Shanghai, China', ['historical site', 'art']]
 def get_destination_index(destination):
   destination_index = destinations.index(destination)
   return destination_index
-print(get_destination_index("Los Angeles, USA"))
-#print(get_destination_index("Hyderabad, India"))
-print()
+#print(get_destination_index("Los Angeles, USA"))
+# This print statement below will produce an error because destination is not in list
+# print(get_destination_index("Hyderabad, India"))
+#print()
 def get_traveler_location(traveler):
   traveler_destination = traveler[1]
   traveler_destination_index = get_destination_index(traveler_destination)
   return traveler_destination_index
 test_destination_index = get_traveler_location(test_traveler)
-print(test_destination_index)
+#print(test_destination_index)
 
 attractions = [[],[],[],[],[]]
-print(attractions)
-print()
+#print(attractions)
+#print()
 def add_attraction(destination, attraction):
   destination_index = get_destination_index(destination)
   attractions_for_destination = attractions[destination_index]
@@ -33,4 +34,21 @@ add_attraction("Sao Paulo, Brazil", ["Sao Paulo Zoo", ["zoo"]])
 add_attraction("Sao Paulo, Brazil", ["Pátio do Colégio", ["historical site"]])
 add_attraction("Cairo, Egypt", ["Pyramids of Giza", ["monument", "historical site"]])
 add_attraction("Cairo, Egypt", ["Egyptian Museum", ["museum"]])
+print("These amazing attractions consist of: ")
 print(attractions)
+print()
+
+# Interest Finder
+def find_attractions(destination, interests):
+  destination_index = get_destination_index(destination)
+  attractions_in_city = attractions[destination_index]
+  attractions_with_interest = []
+  for possible_attraction in attractions_in_city:
+    attraction_tags = possible_attraction[1]
+    for interest in interests:
+      if interest in attraction_tags:
+        attractions_with_interest.append(possible_attraction[0])
+  return attractions_with_interest
+la_arts = find_attractions("Los Angeles, USA", ["art"])
+print("The arts attraction in Los Angeles, USA is: ")
+print(la_arts)
