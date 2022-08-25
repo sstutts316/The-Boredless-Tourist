@@ -1,3 +1,5 @@
+print("Welcome to The Boredless Tourist, an online application giving you the power to find the parts of the city that fit the pace of your life.")
+print()
 destinations = ["Paris, France", "Shanghai, China", "Los Angeles, USA", "Sao Paulo, Brazil", "Cairo, Egypt"]
 test_traveler = ['Erin Wilkes', 'Shanghai, China', ['historical site', 'art']]
 
@@ -34,11 +36,11 @@ add_attraction("Sao Paulo, Brazil", ["Sao Paulo Zoo", ["zoo"]])
 add_attraction("Sao Paulo, Brazil", ["Pátio do Colégio", ["historical site"]])
 add_attraction("Cairo, Egypt", ["Pyramids of Giza", ["monument", "historical site"]])
 add_attraction("Cairo, Egypt", ["Egyptian Museum", ["museum"]])
-print("These amazing attractions consist of: ")
+print("Some of the amazing attractions can consist of: ")
 print(attractions)
 print()
 
-# Interest Finder
+# Help travelers find interesting places in new cities
 def find_attractions(destination, interests):
   destination_index = get_destination_index(destination)
   attractions_in_city = attractions[destination_index]
@@ -52,3 +54,20 @@ def find_attractions(destination, interests):
 la_arts = find_attractions("Los Angeles, USA", ["art"])
 print("The arts attraction in Los Angeles, USA is: ")
 print(la_arts)
+print()
+# Connecting people with the attractions they are interested in
+def get_attractions_for_traveler(traveler):
+  traveler_destination = traveler[1]
+  traveler_interests = traveler[2]
+  traveler_attractions = find_attractions(traveler_destination, traveler_interests)
+  interests_string = "Hi " + traveler[0] + ", we think you'll like these places around " + traveler_destination + ":"
+  for attraction in range(len(traveler_attractions)):
+    if traveler_attractions[-1] == traveler_attractions[attraction]:
+      interests_string += " the " + traveler_attractions[attraction] + "."
+    else:
+      interests_string += " the " + traveler_attractions[attraction] + ","
+    return interests_string
+smills_france = get_attractions_for_traveler(['Dereck Smill', 'Paris, France', ['monument']])
+
+print("The program output should look something like this: ")
+print(smills_france)
