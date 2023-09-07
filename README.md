@@ -1,5 +1,5 @@
 # The-Boredless-Tourist
 
-This mini project helps to highlight skills of javascript that I have learned from the CodeCademy platform.
+This mini project helps to highlight some of the pertinent javascript skills that I have learned from the Codecademy platform.
 
 It is about a fictitious traveler visiting various places.
